@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>AI Skill Dashboard</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body{
+font-family: Arial;
+background:#f5f5f5;
+}
+
+.panel{
+background:white;
+padding:20px;
+margin:20px;
+border-radius:10px;
+box-shadow:0px 0px 5px gray;
+}
+
+.alert{
+padding:10px;
+background:#ffcc00;
+border-radius:5px;
+margin:10px 0;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Student Skill Dashboard</h1>
+
+<div class="panel">
+<h3>Skill Assessment</h3>
+
+<form action="/predict" method="post">
+
+Python Skill
+<input type="number" name="python"><br><br>
+
+Problem Solving
+<input type="number" name="problem"><br><br>
+
+Coding Experience
+<input type="number" name="coding"><br><br>
+
+<input type="submit" value="Analyze Skill">
+
+</form>
+</div>
+
+<div class="panel">
+<h3>AI Prediction</h3>
+
+<p>{{prediction}}</p>
+
+<div class="alert">
+⚠ Practice more coding to improve your skill level.
+</div>
+
+</div>
+
+<div class="panel">
+<h3>Skill Chart</h3>
+
+<canvas id="skillChart"></canvas>
+
+</div>
+
+<script>
+
+const ctx = document.getElementById('skillChart');
+
+new Chart(ctx, {
+type: 'bar',
+data: {
+labels: ['Python','Problem Solving','Coding'],
+datasets: [{
+label: 'Skill Level',
+data: [6,7,5]
+}]
+}
+});
+
+</script>
+
+</body>
+</html>
